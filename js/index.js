@@ -77,6 +77,27 @@ function ordne(data){
 	return collect;
 }
 
+function regexFilter(data){
+	var patt =new Array(
+		new RegExp("[\s\S]*[sS]treet [fF]ighter[\s\S]*")
+	);
+
+	var obj=new Array();
+	var countData=data.length;
+	var countPatt=patt.length;
+	var j=0;
+	for(var i=0;i<countData;i++){
+		for (var k=0;k<countPatt;k++){
+			if(patt[k].test(data[i].game)){
+				obj[j]=data[i];	
+				j++;
+				break;
+			}
+		}
+	}
+	return obj;
+}
+
 function username(){
 	var user=new Array(
 		"insertgame"
@@ -108,12 +129,11 @@ function createSrc(user){
 	return src
 }
 
-function jsonp(data)
-{
+function jsonp(data){
 	// hier passiert das meiste
 	var obj=ordne(data);
-	//filter funktion hier hinzufügen
-	tableCreate(obj);
+	var filtered=regexFilter(obj);
+	tableCreate(filtered);
 	console.log("jsonp invoked");
 }
 
