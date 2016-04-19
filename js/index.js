@@ -133,4 +133,4 @@ function stream_invokeJsonp(){
 
 	console.log("run");
 	stream_invokeJsonp();
-	var fn=window.setInterval(stream_invokeJsonp,10000);
+	var fn=window.setInterval(stream_invokeJsonp,30000);
