@@ -12,8 +12,6 @@ function tableCreate(data) {
   		tbl.parentNode.removeChild(tbl);
 		}
 
-		//body reference 
-		var body = document.getElementsByTagName("body")[0];
 		// create elements <table> and a <tbody>
 		var tbl     = document.createElement("table");
 		tbl.id="streamTbl";
@@ -56,7 +54,7 @@ function tableCreate(data) {
 			tbl.appendChild(row);
 		}
 		tbl.setAttribute("border", "2");
-		body.appendChild(tbl);
+		return tbl;
 }
 
 function ordne(data){
@@ -132,11 +130,56 @@ function createSrc(user){
 	return src
 }
 
+function divCreate(elem,data){
+		console.log(data);
+		var containerId="streamContainer";
+		var entryClass="streamEntry";
+		var containerDiv=document.getElementById(containerId);
+		if(containerDiv!=null){
+  		containerDiv.parentNode.removeChild(containerDiv);
+		}
+		var containerDiv = document.createElement("div");
+		containerDiv.id=containerId;
+
+		for (var i = 0; i <data.length; i++) {
+			var entryDiv = document.createElement("div");
+			entryDiv.className="entryClass";
+			var span=document.createElement("span");
+				span.innerHTML=data[i].viewers;
+				entryDiv.appendChild(span);
+			var span=document.createElement("span");
+				span.innerHTML=data[i].name;
+				entryDiv.appendChild(span);
+			var span=document.createElement("span");
+				span.innerHTML=data[i].game;
+				entryDiv.appendChild(span);
+			var span=document.createElement("span");
+				span.innerHTML=data[i].status;
+				entryDiv.appendChild(span);
+			var span=document.createElement("span");
+				span.innerHTML=data[i].logo;
+				entryDiv.appendChild(span);
+			var span=document.createElement("span");
+				span.innerHTML=data[i].url;
+				entryDiv.appendChild(span);
+			var span=document.createElement("span");
+				span.innerHTML=data[i].provider;
+				entryDiv.appendChild(span);
+			containerDiv.appendChild(entryDiv);
+		}
+		elem.appendChild(containerDiv);
+}
+
 function jsonp(data){
 	// hier passiert das meiste
 	var obj=ordne(data);
 	var filtered=regexFilter(obj);
-	tableCreate(filtered);
+
+	//var element=document.getElementsByTagName("body")[0];
+	var element=document.getElementById("22");
+	console.log(element);
+	divCreate(element,filtered);
+	//var tbl=tableCreate(filtered);
 	console.log("jsonp invoked");
 }
 
