@@ -114,6 +114,8 @@ function username(){
 		,"chargiii" 
 		,"dicktraitor" 
 		,"mdz_jimmy" 
+		,"atthegates213"
+		,"neekogaming"
 	);
 	return user;
 }
