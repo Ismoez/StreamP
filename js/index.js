@@ -80,6 +80,7 @@ function ordne(data){
 function regexFilter(data){
 	var patt =new Array(
 		new RegExp("[\s\S]*[sS]treet [fF]ighter[\s\S]*")
+		,new RegExp("[\s\S]*Guilty Gear[\s\S]*","i")
 	);
 
 	var obj=new Array();
