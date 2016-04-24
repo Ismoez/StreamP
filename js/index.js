@@ -79,6 +79,7 @@ function regexFilter(data){
 	var patt =new Array(
 		new RegExp("[\s\S]*[sS]treet [fF]ighter[\s\S]*")
 		,new RegExp("[\s\S]*Guilty Gear[\s\S]*","i")
+		,new RegExp("[\s\S]*Killer Instinct[\s\S]*","i")
 	);
 
 	var obj=new Array();
@@ -118,6 +119,7 @@ function username(){
 	return user;
 }
 
+
 function createSrc(user){
 	var url='https://api.twitch.tv/kraken/streams?channel=';
 	var callback="jsonp";
@@ -128,46 +130,140 @@ function createSrc(user){
 	list+=user[user.length-1];
 	var src=url+list+"&callback="+callback;
 	return src
+
+function divCreateOld(elem,data){
+	if(elem==null){
+		return;
+	}
+	console.log(data);
+	var containerId="streamContainer";
+
+	var streamEntry="streamEntry";
+	var streamEntryBody="streamEntryBody";
+	var row="streamEntryRow";
+	var key="streamEntryRowKey";
+	var value="streamEntryRowValue";
+
+	var containerDiv=document.getElementById(containerId);
+	if(containerDiv!=null){
+		containerDiv.parentNode.removeChild(containerDiv);
+	}
+	var containerDiv = document.createElement("div");
+	containerDiv.id=containerId;
+
+	for (var i = 0; i <data.length; i++) {
+		var entryDiv = document.createElement("div");
+		entryDiv.className=entryClass;
+		var span=document.createElement("span");
+			span.innerHTML=data[i].viewers;
+			entryDiv.appendChild(span);
+		var span=document.createElement("span");
+			span.innerHTML=data[i].name;
+			entryDiv.appendChild(span);
+		var span=document.createElement("span");
+			span.innerHTML=data[i].game;
+			entryDiv.appendChild(span);
+		var span=document.createElement("span");
+			span.innerHTML=data[i].status;
+			entryDiv.appendChild(span);
+		var span=document.createElement("span");
+			span.innerHTML=data[i].logo;
+			entryDiv.appendChild(span);
+		var span=document.createElement("span");
+			span.innerHTML=data[i].url;
+			entryDiv.appendChild(span);
+		var span=document.createElement("span");
+			span.innerHTML=data[i].provider;
+			entryDiv.appendChild(span);
+		containerDiv.appendChild(entryDiv);
+	}
+	elem.appendChild(containerDiv);
 }
 
 function divCreate(elem,data){
-		console.log(data);
-		var containerId="streamContainer";
-		var entryClass="streamEntry";
-		var containerDiv=document.getElementById(containerId);
-		if(containerDiv!=null){
-  		containerDiv.parentNode.removeChild(containerDiv);
-		}
-		var containerDiv = document.createElement("div");
-		containerDiv.id=containerId;
+	if(elem==null){
+		return;
+	}
+	console.log(data);
 
-		for (var i = 0; i <data.length; i++) {
-			var entryDiv = document.createElement("div");
-			entryDiv.className="entryClass";
-			var span=document.createElement("span");
-				span.innerHTML=data[i].viewers;
-				entryDiv.appendChild(span);
-			var span=document.createElement("span");
-				span.innerHTML=data[i].name;
-				entryDiv.appendChild(span);
-			var span=document.createElement("span");
-				span.innerHTML=data[i].game;
-				entryDiv.appendChild(span);
-			var span=document.createElement("span");
-				span.innerHTML=data[i].status;
-				entryDiv.appendChild(span);
-			var span=document.createElement("span");
-				span.innerHTML=data[i].logo;
-				entryDiv.appendChild(span);
-			var span=document.createElement("span");
-				span.innerHTML=data[i].url;
-				entryDiv.appendChild(span);
-			var span=document.createElement("span");
-				span.innerHTML=data[i].provider;
-				entryDiv.appendChild(span);
-			containerDiv.appendChild(entryDiv);
-		}
-		elem.appendChild(containerDiv);
+	var id_container="streamContainer";
+	var class_streamEntry="streamEntry";
+	var class_streamEntryBody="streamEntryBody";
+	var class_streamEntryRow="streamEntryRow";
+	var class_streamEntryRowKey="streamEntryRowKey";
+	var class_streamEntryRowValue="streamEntryRowValue";
+
+	var class_streamEntryRow="row";
+	var class_streamEntryRowKey="key";
+	var class_streamEntryRowValue="value";
+
+	var containerDiv=document.getElementById(id_container);
+
+	if(containerDiv!=null){
+		containerDiv.parentNode.removeChild(containerDiv);
+	}
+	containerDiv = document.createElement("div");
+	containerDiv.id=id_container;
+
+	for (var i = 0; i <data.length; i++) {
+		var backGroundImage="url('"+data[i].logo+"')";
+		console.log(backGroundImage);
+		var a_entry=document.createElement("a");
+			a_entry.className=class_streamEntry;
+			a_entry.href=data[i].url;
+			a_entry.style.backgroundImage = backGroundImage;
+		var span_entryBody=document.createElement("span");
+			span_entryBody.className=class_streamEntryBody;
+
+		var span_entryBodyRow=document.createElement("span");
+			span_entryBodyRow.className=class_streamEntryRow;
+		var span_entryBodyRowKey=document.createElement("span");
+			span_entryBodyRowKey.className=class_streamEntryRowKey;
+			span_entryBodyRowKey.innerHTML="Viewers:";
+		var span_entryBodyRowValue=document.createElement("span");
+			span_entryBodyRowValue.className=class_streamEntryRowValue;
+			span_entryBodyRowValue.innerHTML=data[i].viewers;
+		span_entryBodyRow.appendChild(span_entryBodyRowKey);
+		span_entryBodyRow.appendChild(span_entryBodyRowValue);
+		span_entryBody.appendChild(span_entryBodyRow);
+
+
+		span_entryBodyRow=document.createElement("span");
+			span_entryBodyRow.className=class_streamEntryRow;
+		span_entryBodyRowKey=document.createElement("span");
+			span_entryBodyRowKey.className=class_streamEntryRowKey;
+			span_entryBodyRowKey.innerHTML="Game:";
+		span_entryBodyRowValue=document.createElement("span");
+			span_entryBodyRowValue.className=class_streamEntryRowValue;
+			span_entryBodyRowValue.innerHTML=data[i].game;
+		span_entryBodyRow.appendChild(span_entryBodyRowKey);
+		span_entryBodyRow.appendChild(span_entryBodyRowValue);
+		span_entryBody.appendChild(span_entryBodyRow);
+
+		span_entryBodyRowKey=document.createElement("span");
+			span_entryBodyRowKey.className=class_streamEntryRowKey;
+			span_entryBodyRowKey.innerHTML="Status:";
+		span_entryBodyRowValue=document.createElement("span");
+			span_entryBodyRowValue.className=class_streamEntryRowValue;
+			span_entryBodyRowValue.innerHTML=data[i].status;
+		span_entryBodyRow.appendChild(span_entryBodyRowKey);
+		span_entryBodyRow.appendChild(span_entryBodyRowValue);
+		span_entryBody.appendChild(span_entryBodyRow);
+		
+		span_entryBodyRowKey=document.createElement("span");
+			span_entryBodyRowKey.className=class_streamEntryRowKey;
+			span_entryBodyRowKey.innerHTML="Viewers:";
+		span_entryBodyRowValue=document.createElement("span");
+			span_entryBodyRowValue.className=class_streamEntryRowValue;
+			span_entryBodyRowValue.innerHTML=data[i].viewers;
+		span_entryBodyRow.appendChild(span_entryBodyRowKey);
+		span_entryBodyRow.appendChild(span_entryBodyRowValue);
+		span_entryBody.appendChild(span_entryBodyRow);
+		
+		a_entry.appendChild(span_entryBody);
+		containerDiv.appendChild(a_entry);
+	}
+	elem.appendChild(containerDiv);
 }
 
 function jsonp(data){
@@ -176,7 +272,7 @@ function jsonp(data){
 	var filtered=regexFilter(obj);
 
 	//var element=document.getElementsByTagName("body")[0];
-	var element=document.getElementById("22");
+	var element=document.getElementById("FANG");
 	console.log(element);
 	divCreate(element,filtered);
 	//var tbl=tableCreate(filtered);
