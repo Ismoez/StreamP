@@ -119,7 +119,6 @@ function username(){
 	return user;
 }
 
-
 function createSrc(user){
 	var url='https://api.twitch.tv/kraken/streams?channel=';
 	var callback="jsonp";
@@ -130,6 +129,7 @@ function createSrc(user){
 	list+=user[user.length-1];
 	var src=url+list+"&callback="+callback;
 	return src
+}
 
 function divCreateOld(elem,data){
 	if(elem==null){
