@@ -115,7 +115,10 @@ function username(){
 		,"mdz_jimmy" 
 		,"atthegates213"
 		,"neekogaming"
+		,"nymatikz"
 		,"leveluplive"
+		,"heisenbergshowgta"
+		,"levencius"
 	);
 	return user;
 }
@@ -189,6 +192,7 @@ function divCreate(elem,data){
 
 	var id_container="streamContainer";
 	var class_streamEntry="streamEntry";
+	var class_streamEntryImage="streamEntryImage";
 	var class_streamEntryBody="streamEntryBody";
 	var class_streamEntryRow="streamEntryRow";
 	var class_streamEntryRowKey="streamEntryRowKey";
@@ -212,9 +216,12 @@ function divCreate(elem,data){
 		var a_entry=document.createElement("a");
 			a_entry.className=class_streamEntry;
 			a_entry.href=data[i].url;
-			a_entry.style.backgroundImage = backGroundImage;
+			//a_entry.style.backgroundImage = backGroundImage;
 		var span_entryBody=document.createElement("span");
 			span_entryBody.className=class_streamEntryBody;
+		var span_entryImage=document.createElement("span");
+			span_entryImage.className=class_streamEntryImage;	
+			span_entryImage.style.backgroundImage = backGroundImage;
 
 		var span_entryBodyRow=document.createElement("span");
 			span_entryBodyRow.className=class_streamEntryRow;
@@ -227,7 +234,6 @@ function divCreate(elem,data){
 		span_entryBodyRow.appendChild(span_entryBodyRowKey);
 		span_entryBodyRow.appendChild(span_entryBodyRowValue);
 		span_entryBody.appendChild(span_entryBodyRow);
-
 
 		span_entryBodyRow=document.createElement("span");
 			span_entryBodyRow.className=class_streamEntryRow;
@@ -261,6 +267,81 @@ function divCreate(elem,data){
 		span_entryBodyRow.appendChild(span_entryBodyRowValue);
 		span_entryBody.appendChild(span_entryBodyRow);
 		
+		a_entry.appendChild(span_entryImage);
+		a_entry.appendChild(span_entryBody);
+		containerDiv.appendChild(a_entry);
+	}
+	elem.appendChild(containerDiv);
+}
+
+function aCreate(className,href){
+	var a=document.createElement("a");
+		a.className=className;
+		a.href=href;
+	return a;
+}
+
+function createSpanEntryRow(key,value,rowClass,keyClass,valueClass){
+	var spanRow=document.createElement("span");
+		spanRow.className=rowClass;
+	var spanKey=document.createElement("span");
+		spanKey.className=keyClass;
+		spanKey.innerHTML=key;
+	var spanValue=document.createElement("span");
+		spanValue.className=valueClass;
+		spanValue.innerHTML=value;
+	spanRow.appendChild(spanKey);
+	spanRow.appendChild(spanValue);
+	return spanRow;
+}
+
+function divCreate2(elem,data){
+	if(elem==null){
+		return;
+	}
+	console.log(data);
+
+	var id_container="streamContainer";
+	var class_streamEntry="streamEntry";
+	var class_streamEntryImage="streamEntryImage";
+	var class_streamEntryBody="streamEntryBody";
+	/*
+	var class_streamEntryRow="streamEntryRow";
+	var class_streamEntryRowKey="streamEntryRowKey";
+	var class_streamEntryRowValue="streamEntryRowValue";
+	*/
+
+	var class_streamEntryRow="row";
+	var class_streamEntryRowKey="key";
+	var class_streamEntryRowValue="value";
+
+	var containerDiv=document.getElementById(id_container);
+
+	if(containerDiv!=null){
+		containerDiv.parentNode.removeChild(containerDiv);
+	}
+	containerDiv = document.createElement("div");
+	containerDiv.id=id_container;
+
+	for (var i = 0; i <data.length; i++) {
+		var backGroundImage="url('"+data[i].logo+"')";
+		console.log(backGroundImage);
+		var a_entry=aCreate(class_streamEntry,data[i].url);
+		var span_entryBody=document.createElement("span");
+			span_entryBody.className=class_streamEntryBody;
+		var span_entryImage=document.createElement("span");
+			span_entryImage.className=class_streamEntryImage;	
+			span_entryImage.style.backgroundImage = backGroundImage;
+
+		var span_entryBodyRow=createSpanEntryRow("name",data[i].name,class_streamEntryRow,class_streamEntryRowKey,class_streamEntryRowValue);
+		span_entryBody.appendChild(span_entryBodyRow);
+		var span_entryBodyRow=createSpanEntryRow("Game:",data[i].game,class_streamEntryRow,class_streamEntryRowKey,class_streamEntryRowValue);
+		span_entryBody.appendChild(span_entryBodyRow);
+		var span_entryBodyRow=createSpanEntryRow("Status",data[i].status,class_streamEntryRow,class_streamEntryRowKey,class_streamEntryRowValue);
+		span_entryBody.appendChild(span_entryBodyRow);
+		var span_entryBodyRow=createSpanEntryRow("Viewers",data[i].viewers,class_streamEntryRow,class_streamEntryRowKey,class_streamEntryRowValue);
+		span_entryBody.appendChild(span_entryBodyRow);
+		a_entry.appendChild(span_entryImage);
 		a_entry.appendChild(span_entryBody);
 		containerDiv.appendChild(a_entry);
 	}
@@ -275,7 +356,7 @@ function jsonp(data){
 	//var element=document.getElementsByTagName("body")[0];
 	var element=document.getElementById("FANG");
 	console.log(element);
-	divCreate(element,filtered);
+	divCreate2(element,filtered);
 	//var tbl=tableCreate(filtered);
 	console.log("jsonp invoked");
 }
