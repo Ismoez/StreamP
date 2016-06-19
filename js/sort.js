@@ -1,0 +1,41 @@
+function dummyStreams(){
+	var collect=new Array();
+	var i=0;
+		collect[i]=new Object();
+		collect[i]['viewers']=10;
+		collect[i]['name']="TEull";
+		collect[i]['game']="Killermiller";
+		collect[i]['status']="Fapping alot";
+		collect[i]['logo']="https://static-cdn.jtvnw.net/jtv_user_pictures/jakyomanor-profile_image-87cb240acd3b73b8-300x300.jpeg";
+		collect[i]['url']=streams[i].channel.url;
+		collect[i]['provider']="twitch";
+	i=1;
+		collect[i]=new Object();
+		collect[i]['viewers']=5;
+		collect[i]['name']="blipblipblip";
+		collect[i]['game']="WHEE";
+		collect[i]['status']="sdfqwer alot";
+		collect[i]['logo']="https://static-cdn.jtvnw.net/jtv_user_pictures/jakyomanor-profile_image-87cb240acd3b73b8-300x300.jpeg";
+		collect[i]['url']="";
+		collect[i]['provider']="twitch";
+	i=2;
+		collect[i]=new Object();
+		collect[i]['viewers']=25;
+		collect[i]['name']="blipblipblip";
+		collect[i]['game']="WHEE";
+		collect[i]['status']="sdfqwer alot";
+		collect[i]['logo']="https://static-cdn.jtvnw.net/jtv_user_pictures/jakyomanor-profile_image-87cb240acd3b73b8-300x300.jpeg";
+		collect[i]['url']="";
+		collect[i]['provider']="twitch";
+	i=3;
+		collect[i]=new Object();
+		collect[i]['viewers']=6;
+		collect[i]['name']="blipblipblip";
+		collect[i]['game']="WHEE";
+		collect[i]['status']="sdfqwer alot";
+		collect[i]['logo']="https://static-cdn.jtvnw.net/jtv_user_pictures/jakyomanor-profile_image-87cb240acd3b73b8-300x300.jpeg";
+		collect[i]['url']="";
+		collect[i]['provider']="twitch";
+
+	return collect;
+}
