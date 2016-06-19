@@ -356,7 +356,8 @@ function jsonp(data){
 	//var element=document.getElementsByTagName("body")[0];
 	var element=document.getElementById("FANG");
 	console.log(element);
-	divCreate2(element,filtered);
+	//divCreate2(element,filtered);
+	divCreate2(element,obj);
 	//var tbl=tableCreate(filtered);
 	console.log("jsonp invoked");
 }
