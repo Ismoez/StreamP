@@ -1,0 +1,37 @@
+#FANG {
+    display: table;
+}
+p {
+    color: rgb(250,160,10);
+}
+.row {
+    display: table;
+    margin: 0.3px;
+    padding: 0.5px;
+}
+.key {
+    font-weight: bold;
+    }
+a {
+    text-decoration: none;
+    color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+.streamEntryImage {
+    display: table-cell;
+    background-size:contain;
+    width:  85px;
+    background-repeat: no-repeat;
+}
+.streamContainer {
+    display: table;
+    width: 500px;
+    height: 500px;
+}
+.streamEntry {
+    display: table;
+    padding: 5px;
+    margin-top: 1px;
+}
+#streamConainer{}.entryClass{}
