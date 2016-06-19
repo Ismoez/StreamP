@@ -351,7 +351,14 @@ function divCreate2(elem,data){
 function jsonp(data){
 	// hier passiert das meiste
 	var obj=ordne(data);
+
+	//sortieren nach viewer
+	obj.sort(function(a, b) {
+    return parseInt(a.viewers) - parseInt(b.viewers);
+});
+	//die streams werden nochmal gefiltert
 	var filtered=regexFilter(obj);
+
 
 	//var element=document.getElementsByTagName("body")[0];
 	var element=document.getElementById("FANG");
