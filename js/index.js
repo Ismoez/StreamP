@@ -1,3 +1,4 @@
+//ANFANG alte funktionen die nicht genutzt werden
 function createCell(text,type){
 	var cell = document.createElement(type);    
 	var cellText = document.createTextNode(text); 
@@ -55,84 +56,6 @@ function tableCreate(data) {
 		}
 		tbl.setAttribute("border", "2");
 		return tbl;
-}
-
-function ordne(data){
-	var collect=new Array();
-	var streams =data.streams;
-	var count=streams.length;
-	for(i=0;i<count;i++){
-		collect[i]=new Object();
-		collect[i]['viewers']=streams[i].viewers;
-		collect[i]['name']=streams[i].channel.name;
-		collect[i]['game']=streams[i].channel.game;
-		collect[i]['status']=streams[i].channel.status;
-		collect[i]['logo']=streams[i].channel.logo;
-		collect[i]['url']=streams[i].channel.url;
-		collect[i]['provider']="twitch";
-	}
-
-	return collect;
-}
-
-function regexFilter(data){
-	var patt =new Array(
-		new RegExp("[\s\S]*[sS]treet [fF]ighter[\s\S]*")
-		,new RegExp("[\s\S]*Guilty Gear[\s\S]*","i")
-		,new RegExp("[\s\S]*Killer Instinct[\s\S]*","i")
-	);
-
-	var obj=new Array();
-	var countData=data.length;
-	var countPatt=patt.length;
-	var j=0;
-	for(var i=0;i<countData;i++){
-		for (var k=0;k<countPatt;k++){
-			if(patt[k].test(data[i].game)){
-				obj[j]=data[i];	
-				j++;
-				break;
-			}
-		}
-	}
-	return obj;
-}
-
-function username(){
-	var user=new Array(
-		"insertgame"
-		,"fight_club_nrw"
-		,"brawlonestream"
-		,"sumpfauge"
-		,"virtualdojovienna"
-		,"m1kr0s"
-		,"thomsonrult"
-		,"schlossfgc"
-		,"draculasan89"
-		,"gghalibel"
-		,"chargiii" 
-		,"dicktraitor" 
-		,"mdz_jimmy" 
-		,"atthegates213"
-		,"neekogaming"
-		,"nymatikz"
-		,"leveluplive"
-		,"heisenbergshowgta"
-		,"levencius"
-	);
-	return user;
-}
-
-function createSrc(user){
-	var url='https://api.twitch.tv/kraken/streams?channel=';
-	var callback="jsonp";
-	var list='';
-	for(i=0;i<user.length-1;i++){
-		list+=user[i]+",";
-	}
-	list+=user[user.length-1];
-	var src=url+list+"&callback="+callback;
-	return src
 }
 
 function divCreateOld(elem,data){
@@ -295,6 +218,137 @@ function createSpanEntryRow(key,value,rowClass,keyClass,valueClass){
 	return spanRow;
 }
 
+//ENDE alte funktionen die nicht genutzt werden
+
+
+//ANFANG editierbare Funktionen
+
+function regexFilter(data){
+	var patt =new Array(
+		new RegExp("[\s\S]*[sS]treet [fF]ighter[\s\S]*")
+		,new RegExp("[\s\S]*Guilty Gear[\s\S]*","i")
+		,new RegExp("[\s\S]*Killer Instinct[\s\S]*","i")
+	);
+
+	var obj=new Array();
+	var countData=data.length;
+	var countPatt=patt.length;
+	var j=0;
+	for(var i=0;i<countData;i++){
+		for (var k=0;k<countPatt;k++){
+			if(patt[k].test(data[i].game)){
+				obj[j]=data[i];	
+				j++;
+				break;
+			}
+		}
+	}
+	return obj;
+}
+
+function username(){
+	var user=new Array(
+		"insertgame"
+		,"fight_club_nrw"
+		,"brawlonestream"
+		,"sumpfauge"
+		,"virtualdojovienna"
+		,"m1kr0s"
+		,"thomsonrult"
+		,"schlossfgc"
+		,"draculasan89"
+		,"gghalibel"
+		,"chargiii" 
+		,"dicktraitor" 
+		,"mdz_jimmy" 
+		,"atthegates213"
+		,"neekogaming"
+		,"nymatikz"
+		,"leveluplive"
+		,"heisenbergshowgta"
+		,"levencius"
+	);
+	return user;
+}
+
+//ENDE editierbare Funktionen
+
+//ANFANG DUMMYDAten 
+function dummyStreams(){
+	var collect=new Array();
+	var i=0;
+		collect[i]=new Object();
+		collect[i]['viewers']=10;
+		collect[i]['name']="TEull";
+		collect[i]['game']="Killermiller";
+		collect[i]['status']="Fapping alot";
+		collect[i]['logo']="https://static-cdn.jtvnw.net/jtv_user_pictures/jakyomanor-profile_image-87cb240acd3b73b8-300x300.jpeg";
+		collect[i]['url']="";
+		collect[i]['provider']="twitch";
+	i=1;
+		collect[i]=new Object();
+		collect[i]['viewers']=5;
+		collect[i]['name']="blipblipblip";
+		collect[i]['game']="WHEE";
+		collect[i]['status']="sdfqwer alot";
+		collect[i]['logo']="https://static-cdn.jtvnw.net/jtv_user_pictures/jakyomanor-profile_image-87cb240acd3b73b8-300x300.jpeg";
+		collect[i]['url']="";
+		collect[i]['provider']="twitch";
+	i=2;
+		collect[i]=new Object();
+		collect[i]['viewers']=25;
+		collect[i]['name']="blipblipblip";
+		collect[i]['game']="WHEE";
+		collect[i]['status']="sdfqwer alot";
+		collect[i]['logo']="https://static-cdn.jtvnw.net/jtv_user_pictures/jakyomanor-profile_image-87cb240acd3b73b8-300x300.jpeg";
+		collect[i]['url']="";
+		collect[i]['provider']="twitch";
+	i=3;
+		collect[i]=new Object();
+		collect[i]['viewers']=6;
+		collect[i]['name']="blipblipblip";
+		collect[i]['game']="WHEE";
+		collect[i]['status']="sdfqwer alot";
+		collect[i]['logo']="https://static-cdn.jtvnw.net/jtv_user_pictures/jakyomanor-profile_image-87cb240acd3b73b8-300x300.jpeg";
+		collect[i]['url']="";
+		collect[i]['provider']="twitch";
+
+	return collect;
+}
+
+//ENDE DUMMYDAten 
+
+
+function createSrc(user){
+	var url='https://api.twitch.tv/kraken/streams?channel=';
+	var callback="jsonp";
+	var list='';
+	for(i=0;i<user.length-1;i++){
+		list+=user[i]+",";
+	}
+	list+=user[user.length-1];
+	var src=url+list+"&callback="+callback;
+	return src
+}
+
+function ordne(data){
+	var collect=new Array();
+	var streams =data.streams;
+	var count=streams.length;
+	for(i=0;i<count;i++){
+		collect[i]=new Object();
+		collect[i]['viewers']=streams[i].viewers;
+		collect[i]['name']=streams[i].channel.name;
+		collect[i]['game']=streams[i].channel.game;
+		collect[i]['status']=streams[i].channel.status;
+		collect[i]['logo']=streams[i].channel.logo;
+		collect[i]['url']=streams[i].channel.url;
+		collect[i]['provider']="twitch";
+	}
+
+	return collect;
+}
+
 function divCreate2(elem,data){
 	if(elem==null){
 		return;
@@ -348,13 +402,14 @@ function divCreate2(elem,data){
 	elem.appendChild(containerDiv);
 }
 
+//main func wo das zeug passiert
 function jsonp(data){
 	// hier passiert das meiste
 	var obj=ordne(data);
 
 	//sortieren nach viewer
 	obj.sort(function(a, b) {
-    return parseInt(a.viewers) - parseInt(b.viewers);
+    return parseInt(b.viewers) - parseInt(a.viewers) ;
 });
 	//die streams werden nochmal gefiltert
 	var filtered=regexFilter(obj);

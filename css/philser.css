@@ -30,6 +30,7 @@ a {
     height: 500px;
 }
 .streamEntry {
+		overflow: scroll;
     display: table;
     padding: 5px;
     margin-top: 1px;
