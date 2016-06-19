@@ -333,13 +333,13 @@ function divCreate2(elem,data){
 			span_entryImage.className=class_streamEntryImage;	
 			span_entryImage.style.backgroundImage = backGroundImage;
 
-		var span_entryBodyRow=createSpanEntryRow("name",data[i].name,class_streamEntryRow,class_streamEntryRowKey,class_streamEntryRowValue);
+		var span_entryBodyRow=createSpanEntryRow("Name: ",data[i].name,class_streamEntryRow,class_streamEntryRowKey,class_streamEntryRowValue);
 		span_entryBody.appendChild(span_entryBodyRow);
-		var span_entryBodyRow=createSpanEntryRow("Game:",data[i].game,class_streamEntryRow,class_streamEntryRowKey,class_streamEntryRowValue);
+		var span_entryBodyRow=createSpanEntryRow("Game: ",data[i].game,class_streamEntryRow,class_streamEntryRowKey,class_streamEntryRowValue);
 		span_entryBody.appendChild(span_entryBodyRow);
-		var span_entryBodyRow=createSpanEntryRow("Status",data[i].status,class_streamEntryRow,class_streamEntryRowKey,class_streamEntryRowValue);
+		var span_entryBodyRow=createSpanEntryRow("Status: ",data[i].status,class_streamEntryRow,class_streamEntryRowKey,class_streamEntryRowValue);
 		span_entryBody.appendChild(span_entryBodyRow);
-		var span_entryBodyRow=createSpanEntryRow("Viewers",data[i].viewers,class_streamEntryRow,class_streamEntryRowKey,class_streamEntryRowValue);
+		var span_entryBodyRow=createSpanEntryRow("Viewers ",data[i].viewers,class_streamEntryRow,class_streamEntryRowKey,class_streamEntryRowValue);
 		span_entryBody.appendChild(span_entryBodyRow);
 		a_entry.appendChild(span_entryImage);
 		a_entry.appendChild(span_entryBody);
